@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/index.ts": {
-      "includeFiles": ["ca.pem"]
+      "includeFiles": "ca.pem"
     }
   },
   "rewrites": [
