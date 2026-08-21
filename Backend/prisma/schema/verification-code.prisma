@@ -1,0 +1,19 @@
+model VerificationCode {
+  id String @id @default(cuid())
+
+  email String
+
+  name String
+
+  passwordHash String
+
+  codeHash String
+
+  type VerificationType
+
+  expiresAt DateTime
+
+  attempts Int @default(0)
+
+  createdAt DateTime @default(now())
+}

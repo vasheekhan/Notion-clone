@@ -1,0 +1,28 @@
+model AIConversation {
+  id        String   @id @default(cuid())
+  title     String   @default("New conversation")
+  userId    String
+  pageId    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  page     Page?       @relation(fields: [pageId], references: [id], onDelete: SetNull)
+  messages AIMessage[]
+
+  @@index([userId])
+  @@index([pageId])
+}
+
+model AIMessage {
+  id             String        @id @default(cuid())
+  conversationId String
+  role           AIMessageRole
+  content        String        @db.Text
+  action         String?
+  createdAt      DateTime      @default(now())
+
+  conversation AIConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+}

@@ -1,0 +1,209 @@
+
+.btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 0;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform .15s,
+    background .15s,
+    border-color .15s,
+    box-shadow .15s;
+
+  opacity: 0;
+
+  animation: rise .5s ease forwards;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(.98);
+}
+
+
+
+.btn:disabled {
+  opacity: .7;
+  cursor: default;
+}
+
+
+
+.btn-primary {
+
+  background:
+      linear-gradient(
+          135deg,
+          var(--accent-strong),
+          var(--accent)
+      );
+
+  color: var(--accent-ink);
+
+}
+
+.btn-primary:hover:not(:disabled){
+
+transform:translateY(-1px);
+
+box-shadow:
+
+0 8px 22px
+
+color-mix(
+in srgb,
+var(--accent) 45%,
+transparent
+);
+
+}
+
+
+
+.btn-ghost{
+
+background:var(--glass);
+
+border-color:var(--glass-border);
+
+color:var(--text-primary);
+
+}
+
+.btn-ghost:hover:not(:disabled){
+
+border-color:var(--accent);
+
+}
+
+
+.btn svg{
+
+flex-shrink:0;
+
+}
+
+
+
+.btn-ghost svg{
+
+display:block;
+
+}
+
+
+.divider{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin:16px 0;
+
+opacity:0;
+
+animation:rise .5s ease forwards;
+
+animation-delay:.24s;
+
+}
+
+.divider span{
+
+flex:1;
+
+height:1px;
+
+background:var(--glass-border);
+
+}
+
+.divider em{
+
+font-style:normal;
+
+font-size:10.5px;
+
+font-family:"IBM Plex Mono", monospace;
+
+color:var(--text-muted);
+
+}
+
+
+
+.switch{
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:13px;
+
+color:var(--text-secondary);
+
+}
+
+.switch a{
+
+color:var(--accent);
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.switch a:hover{
+
+text-decoration:underline;
+
+}
+
+
+
+.spin{
+
+animation:spin .8s linear infinite;
+
+}
+
+
+.success .btn{
+
+margin-top:12px;
+
+opacity:1;
+
+animation:none;
+
+}
+
+
+
+@media(max-width:420px){
+
+.btn{
+
+font-size:15px;
+
+padding:12px 0;
+
+}
+
+}

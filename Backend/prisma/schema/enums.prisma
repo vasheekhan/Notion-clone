@@ -1,0 +1,21 @@
+enum WorkspaceRole {
+  OWNER
+  ADMIN
+  MEMBER
+}
+
+enum SessionType {
+  ACCESS
+  REFRESH
+}
+
+enum VerificationType {
+  REGISTER
+  LOGIN
+  FORGOT_PASSWORD
+}
+
+enum AIMessageRole {
+  user
+  assistant
+}

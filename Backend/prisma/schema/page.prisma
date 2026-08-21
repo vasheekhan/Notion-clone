@@ -1,0 +1,32 @@
+model Page {
+  id String @id @default(cuid())
+  title String @default("Untitled")
+  content Json?
+  icon String?
+  coverImage String?
+  position Int @default(0)
+  isDeleted Boolean @default(false)
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  workspaceId String
+  workspace Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+
+  authorId String
+  author User @relation("PageAuthor", fields: [authorId], references: [id])
+
+  parentId String?
+  parent Page? @relation("PageHierarchy", fields: [parentId], references: [id])
+  children Page[] @relation("PageHierarchy")
+  
+  aiConversations AIConversation[]
+
+  // OPTIMIZED INDEXES - These will dramatically improve query performance
+  @@index([workspaceId, isDeleted]) // Most common query pattern
+  @@index([parentId, isDeleted]) // For hierarchical queries
+  @@index([workspaceId, parentId, isDeleted]) // For workspace + hierarchy
+  @@index([isDeleted, deletedAt]) // For trash queries
+  @@index([workspaceId, position]) // For ordered page lists
+  @@index([authorId]) // Keep existing
+}

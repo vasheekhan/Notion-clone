@@ -1,0 +1,114 @@
+
+
+.theme-toggle {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+
+  z-index: 100;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+
+  background: var(--glass);
+
+  backdrop-filter: blur(12px);
+
+  color: var(--text-secondary);
+
+  transition:
+    .25s ease,
+    transform .2s ease;
+
+  cursor: pointer;
+}
+
+
+
+.theme-toggle:hover{
+
+color:var(--accent);
+
+border-color:var(--accent);
+
+transform:translateY(-2px);
+
+}
+
+
+.theme-toggle:active{
+
+transform:scale(.95);
+
+}
+
+
+
+.theme-toggle svg{
+
+transition:.3s;
+
+}
+
+
+
+.theme-toggle:hover svg{
+
+transform:rotate(15deg);
+
+}
+
+
+.theme-dark{
+
+background:var(--bg);
+
+color:var(--text-primary);
+
+}
+
+
+
+.theme-light{
+
+background:var(--bg);
+
+color:var(--text-primary);
+
+}
+
+
+
+@media(max-width:900px){
+
+.theme-toggle{
+
+top:16px;
+
+right:16px;
+
+}
+
+}
+
+
+
+
+@media(max-width:420px){
+
+.theme-toggle{
+
+width:34px;
+
+height:34px;
+
+}
+
+}

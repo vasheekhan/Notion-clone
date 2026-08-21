@@ -1,0 +1,28 @@
+model User {
+  id String @id @default(cuid())
+
+  googleId String? @unique
+
+  email String @unique
+
+  name String
+
+  passwordHash String?
+
+  avatar String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  sessions Session[]
+
+  ownedWorkspaces Workspace[] @relation("WorkspaceOwner")
+
+  memberships WorkspaceMember[]
+
+  authoredPages Page[] @relation("PageAuthor")
+
+  aiConversations AIConversation[]
+}
